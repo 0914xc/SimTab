@@ -1,8 +1,8 @@
 {
-    "name": "NASA picture of the day viewer",
+    "name": "SimTab 新标签页",
     "version": "0.0.0.1",
     "manifest_version": 2,
-    "description": "An extension to display the NASA picture of the day.",
+    "description": "An extension that provides a new tab page.",
     "chrome_url_overrides": {
         "newtab": "index.html"
     },
