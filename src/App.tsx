@@ -3,12 +3,6 @@ import { ThemeProvider } from '@mui/system'
 import Clock from './components/Clock'
 import SearchBar from './components/SearchBar'
 
-declare global {
-    interface Window {
-        result: any
-    }
-}
-
 function App() {
     const darkTheme = createTheme({
         palette: {

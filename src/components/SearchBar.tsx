@@ -1,22 +1,33 @@
 import { Autocomplete, TextField } from '@mui/material'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 type SearchBarProps = {
     className?: string
 }
 
 const SearchBar: React.FC<SearchBarProps> = props => {
+    const [keywords, setKeywords] = useState<string>()
     const [options, setOptions] = useState<string[]>([])
 
     window.result = (data: any) => {
         setOptions(data.s)
     }
 
-    // 获取百度搜索建议
     const getBaiduSuggest = async (keywords: string) => {
         const script = document.createElement('script')
         script.src = `http://suggestion.baidu.com/su?wd=${keywords}&cb=window.result`
         document.body.appendChild(script)
+    }
+
+    const handleInputChange = (event: React.SyntheticEvent<Element, Event>, value: string) => {
+        setKeywords(value)
+        getBaiduSuggest(value)
+    }
+
+    const handleChange = (event: React.SyntheticEvent<Element, Event>, value: string | null) => {
+        if (value) {
+            window.open(`https://www.google.com/search?q=${value}`)
+        }
     }
 
     useEffect(() => {}, [])
@@ -26,13 +37,10 @@ const SearchBar: React.FC<SearchBarProps> = props => {
             className={props.className}
             size="medium"
             freeSolo
-            onInputChange={(event, value) => {
-                if (value) {
-                    getBaiduSuggest(value)
-                }
-            }}
             options={options}
-            renderInput={params => <TextField {...params} label="Google" variant="standard" />}
+            onChange={handleChange}
+            onInputChange={handleInputChange}
+            renderInput={params => <TextField {...params} autoFocus label="Google" variant="standard" />}
         />
     )
 }

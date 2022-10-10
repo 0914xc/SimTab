@@ -14,7 +14,7 @@ const Clock: React.FC<ClockProps> = props => {
 
     return (
         <div className={props.className}>
-            <div className="text-8xl my-10 color-white" style={{ fontFamily: 'monospace' }}>
+            <div className="text-8xl my-12 color-white" style={{ fontFamily: 'monospace' }}>
                 {clock}
             </div>
         </div>
