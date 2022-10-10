@@ -1,7 +1,11 @@
 import { Autocomplete, TextField } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-const SearchBar = () => {
+type SearchBarProps = {
+    className?: string
+}
+
+const SearchBar: React.FC<SearchBarProps> = props => {
     const [options, setOptions] = useState<string[]>([])
 
     window.result = (data: any) => {
@@ -19,6 +23,7 @@ const SearchBar = () => {
 
     return (
         <Autocomplete
+            className={props.className}
             size="medium"
             freeSolo
             onInputChange={(event, value) => {

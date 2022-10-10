@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles'
-import Grid from '@mui/material/Unstable_Grid2'
 import { ThemeProvider } from '@mui/system'
+import Clock from './components/Clock'
 import SearchBar from './components/SearchBar'
 
 declare global {
@@ -18,11 +18,8 @@ function App() {
 
     return (
         <ThemeProvider theme={darkTheme}>
-            <Grid container spacing={2}>
-                <Grid xs={4} xsOffset={4}>
-                    <SearchBar />
-                </Grid>
-            </Grid>
+            <Clock className="flex justify-center" />
+            <SearchBar className="max-w-2xl m-auto" />
         </ThemeProvider>
     )
 }
